@@ -52,10 +52,13 @@ class _GalleryPageState extends State<GalleryPage> {
                         ),
                       );
                     },
-                    child: Image.file(
-                      _images[index],
-                      fit: BoxFit.cover,
-                    ),
+                    child: Container(
+                height: 100, // Adjust the height as needed
+                child: Image.file(
+                  _images[index],
+                  fit: BoxFit.cover,
+                ),
+              )
                   ),
                   Positioned.fill(
                     child: Align(
