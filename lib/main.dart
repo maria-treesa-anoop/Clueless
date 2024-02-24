@@ -3,6 +3,7 @@ import 'package:clueless_app/screens/gallery_pg.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'screens/gallery_pg.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -82,19 +83,14 @@ class _InputPageState extends State<InputPage> {
             ElevatedButton(
               onPressed: (){
                 addData();
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => GalleryPage()));
               },
               child: Text('Go to Gallery'),
             ),
           ],
         ),
       ),
-      /*floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => GalleryPage())); / Navigate to GalleryPage
-        }
-  );*/
+  //     
     );
   }
 }

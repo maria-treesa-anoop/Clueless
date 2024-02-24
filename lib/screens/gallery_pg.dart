@@ -1,4 +1,4 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart'; // Importing the image_picker package
 
@@ -9,6 +9,7 @@ class GalleryPage extends StatefulWidget {
 
 class _GalleryPageState extends State<GalleryPage> {
   List<File> _images = []; // List to store selected images
+  List<bool> _availability = []; // List to store availability status of images
 
   Future<void> _pickImages() async {
     final picker = ImagePicker();
@@ -17,6 +18,8 @@ class _GalleryPageState extends State<GalleryPage> {
     if (pickedImages != null) {
       setState(() {
         _images.addAll(pickedImages.map((image) => File(image.path)));
+        // Initialize availability status for newly added images
+        _availability.addAll(List.generate(pickedImages.length, (index) => true));
       });
     }
   }
@@ -35,20 +38,47 @@ class _GalleryPageState extends State<GalleryPage> {
         ),
         itemCount: _images.length,
         itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            onTap: () {
-              // Handle image tap
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => FullScreenImagePage(image: _images[index]),
+          return Column(
+            children: [
+              Stack(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      // Handle image tap
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullScreenImagePage(image: _images[index]),
+                        ),
+                      );
+                    },
+                    child: Image.file(
+                      _images[index],
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned.fill(
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: Checkbox(
+                        value: _availability[index],
+                        onChanged: (value) {
+                          setState(() {
+                            _availability[index] = value ?? false;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                _availability[index] ? 'Available' : 'Unavailable',
+                style: TextStyle(
+                  color: _availability[index] ? Colors.green : Colors.red,
                 ),
-              );
-            },
-            child: Image.file(
-              _images[index],
-              fit: BoxFit.cover,
-            ),
+              ),
+            ],
           );
         },
       ),
@@ -77,4 +107,4 @@ class FullScreenImagePage extends StatelessWidget {
       ),
     );
   }
-}*/
+}
