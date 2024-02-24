@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "320258922067",
+    "project_id": "clueless-423dc",
+    "storage_bucket": "clueless-423dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320258922067:android:e851004f01528d6a1998a6",
+        "android_client_info": {
+          "package_name": "com.example.clueless_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320258922067-0lk1verd3mvmkikcal6srq50hdr08ljp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW2Dz4NNolcuVS_rjIhAvCMxOshV814RI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320258922067-0lk1verd3mvmkikcal6srq50hdr08ljp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "320258922067-4hlm98kklqcq74mcs48nu9ovt26lrgq1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.cluelessApp.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
